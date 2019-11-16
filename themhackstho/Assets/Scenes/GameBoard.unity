@@ -178,8 +178,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 59bcab1e92782004ba3b8e03d7e511fb, type: 3}
+    m_FontSize: 19
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1841,8 +1841,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 59bcab1e92782004ba3b8e03d7e511fb, type: 3}
+    m_FontSize: 19
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2104,8 +2104,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
+  outOfCards: 0
   hand: {fileID: 384646853}
   aiHand: {fileID: 0}
+  deckBtn: {fileID: 738800826692344655}
   cardPrefs:
   - {fileID: 8623964771665866778, guid: d67e35490c6e1af479a6a966dcfbc4f2, type: 3}
   - {fileID: 3320724925759444212, guid: 909d187a566288845a64b958881aadcc, type: 3}
@@ -2436,8 +2438,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
+  outOfCards: 0
   hand: {fileID: 1429603310}
   aiHand: {fileID: 1427182905}
+  deckBtn: {fileID: 1274749846}
   cardPrefs:
   - {fileID: 8623964771665866778, guid: d67e35490c6e1af479a6a966dcfbc4f2, type: 3}
   - {fileID: 3320724925759444212, guid: 909d187a566288845a64b958881aadcc, type: 3}

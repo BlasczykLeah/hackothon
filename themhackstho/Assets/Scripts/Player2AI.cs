@@ -21,19 +21,88 @@ public class Player2AI : MonoBehaviour
         cardTypes = new CardType[5] { CardType.Wizard, CardType.Knight, CardType.Archer, CardType.Sovereign, CardType.Dargon };
     }
 
-    void moreCardsMaybe(int cardCount)
+    bool moreCardsMaybe(int cardCount)
     {
-        if (Points < 1) return;
-        if (cardCount > 3) return;
+        if (Points < 1) return false;
+        if (cardCount > 3) return false;
 
+        int mostCopies = 1;
         if(cardCount == 3 || cardCount == 2)
         {
-            Dictionary<CardType, int> cards = new Dictionary<CardType, int>();
-            cards.Add(theDeck.myHand[0].GetComponent<card>().cardType, 1);
-            for(int i = 1; i < cardCount; i++)
+            if(cardCount == 3)
             {
-
+                if (theDeck.myHand[0].GetComponent<card>().cardType == theDeck.myHand[1].GetComponent<card>().cardType && theDeck.myHand[0].GetComponent<card>().cardType == theDeck.myHand[1].GetComponent<card>().cardType) mostCopies = 3;
+                else if (theDeck.myHand[0].GetComponent<card>().cardType == theDeck.myHand[1].GetComponent<card>().cardType) mostCopies = 2;
+                else if (theDeck.myHand[0].GetComponent<card>().cardType == theDeck.myHand[2].GetComponent<card>().cardType) mostCopies = 2;
+                else if (theDeck.myHand[1].GetComponent<card>().cardType == theDeck.myHand[2].GetComponent<card>().cardType) mostCopies = 2;
             }
+            else
+            {
+                if (theDeck.myHand[0].GetComponent<card>().cardType == theDeck.myHand[1].GetComponent<card>().cardType) mostCopies = 2;
+            }
+
+            Debug.Log("Max copies: " + mostCopies);
+
+            if (mostCopies == 1)
+            {
+                if (cardCount == 3)
+                {
+                    if (Points < 4) return false;
+                    else
+                    {
+                        drawCard();
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (Points < 3) return false;
+                    else
+                    {
+                        drawCard();
+                        return true;
+                    }
+                }
+            }
+            else if(mostCopies == 2)
+            {
+                if(cardCount == 3)
+                {
+                    if (Points < 3) return false;
+                    else
+                    {
+                        drawCard();
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (Points < 2) return false;
+                    else
+                    {
+                        drawCard();
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                if (Points < 3) return false;
+                else
+                {
+                    drawCard();
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            if (Random.Range(0, 2) == 0)
+            {
+                drawCard();
+                return true;
+            }
+            return false;
         }
     }
 
@@ -134,7 +203,7 @@ public class Player2AI : MonoBehaviour
                     return mine.gameObject;
                 }
             }
-            Debug.Log("I don't have any " + cardTypes[i].ToString());
+            Debug.Log("I don't have any " + cardTypes[myChoice].ToString());
         }
 
         Debug.Log("Something broke D:");
@@ -143,11 +212,11 @@ public class Player2AI : MonoBehaviour
 
     public GameObject whatDoIDo()
     {
-        moreCardsMaybe(theDeck.myHand.Count);
-        
+        bool boughtStuff = moreCardsMaybe(theDeck.myHand.Count);
+
         if (theDeck.myHand.Count > 0)
         {
-            cardComparer.inst.P1Turn();
+            if (!boughtStuff) cardComparer.inst.P1Turn();
             if(theDeck.myHand.Count == 1) return randomPick();
             return smartPick();
         }
@@ -158,17 +227,21 @@ public class Player2AI : MonoBehaviour
 
     public bool drawCard()
     {
+        Debug.Log("Imma buy some cards");
         if (theDeck.myHand.Count < 4 && Points > 0)
         {
             removeCoin();
             Points--;
             theDeck.pickCard();
             theDeck.pickCard();
+
+            Invoke("addCard1", 0.5F);
+
             return true;
         }
         else
         {
-            Debug.Log("NOPE");
+            Debug.Log("nvm");
             return false;
         }
     }
@@ -185,5 +258,17 @@ public class Player2AI : MonoBehaviour
         Image temp = money[0];
         money.RemoveAt(0);
         Destroy(temp.gameObject);
+    }
+
+    void addCard1()
+    {
+        theDeck.aiAddCard();
+        Invoke("addCard2", 0.5F);
+    }
+
+    void addCard2()
+    {
+        theDeck.aiAddCard();
+        cardComparer.inst.P1Turn();
     }
 }

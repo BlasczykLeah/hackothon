@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class myDeck : MonoBehaviour
 {
-    public bool isPlayer;
+    public bool isPlayer, outOfCards;
     public Image hand, aiHand;
+    public GameObject deckBtn;
     public Image[] cardPrefs;
     public int[] cardsLeft;
     public int cardCount = 0;
@@ -44,10 +45,17 @@ public class myDeck : MonoBehaviour
 
     public void pickCard()
     {
+        if (cardCount <= 0) return;
         int randCard = Random.Range(0, cardCount);
         Image newCard = null;
 
         cardCount--;
+        if (cardCount <= 0)
+        {
+            outOfCards = true;
+            deckBtn.SetActive(false);
+        }
+
         if (randCard < cardsLeft[0])    //picked wizard
         {
             //Debug.Log("Chose card 0.");

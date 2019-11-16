@@ -27,7 +27,7 @@ public class Player1Me : MonoBehaviour
             removeCoin();
             Points--;
             deck.pickCard();
-            deck.pickCard();
+            Invoke("addCard", 0.5F);
         }
         else
         {
@@ -47,5 +47,10 @@ public class Player1Me : MonoBehaviour
         Image temp = money[0];
         money.RemoveAt(0);
         Destroy(temp.gameObject);
+    }
+
+    void addCard()
+    {
+        deck.pickCard();
     }
 }
