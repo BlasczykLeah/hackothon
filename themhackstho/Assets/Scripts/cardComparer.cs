@@ -7,11 +7,14 @@ public class cardComparer : MonoBehaviour
 {
     public static cardComparer inst;
 
+    public bool compare = false;
     public GameObject p1, p2;
     public GameObject p1Card, p2Card;
     public GameObject dropzone;
     Player1Me meCode;
     Player2AI aiCode;
+
+    GameObject winnerCard;
 
     public int battle;
 
@@ -35,33 +38,14 @@ public class cardComparer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(p1Card != null && p2Card != null)
+        if(p1Card != null && p2Card != null && compare)
         {
-            // compare cards, destroy cards, reset, reactivate ai
+            p2Card.transform.SetParent(dropzone.transform);
+            p2.GetComponent<myDeck>().aiSubCard();
 
-                // compare, give points
-            battle = battleResults(p1Card.GetComponent<card>().cardType, p2Card.GetComponent<card>().cardType);
-            if (battle == -1)
-            {
-                Debug.Log("P2 WON BATTLE");
-                aiCode.Points++;
-            }
-            if (battle == 1)
-            {
-                Debug.Log("P1 WON BATTLE");
-                meCode.Points++;
-            }
-            else Debug.Log("TIE");
-
-                // reset stuffs & destroy cards
-            battle = 0;
-            dropzone.GetComponent<DropZone>().placed = false;
-            Destroy(p1Card);
-            Destroy(p2Card);
-            p1Card = p2Card = null;
-
-                // new p2 card
-            p2Card = aiCode.randomPick();
+            Debug.Log("Imma compare in a sec");
+            Invoke("theBattle", 1F);
+            compare = false;
         }
 
         P1Points = meCode.Points;
@@ -157,5 +141,49 @@ public class cardComparer : MonoBehaviour
                 return 1;
             }
         }
+    }
+
+    void theBattle()
+    {
+        // compare, give points
+        battle = battleResults(p1Card.GetComponent<card>().cardType, p2Card.GetComponent<card>().cardType);
+        if (battle == -1)
+        {
+            Debug.Log("P2 WON BATTLE");
+            Destroy(p1Card);
+            winnerCard = p2Card;
+            aiCode.Points++;
+        }
+        else if (battle == 1)
+        {
+            Debug.Log("P1 WON BATTLE");
+            Destroy(p2Card);
+            winnerCard = p1Card;
+            meCode.Points++;
+        }
+        else
+        {
+            Debug.Log("TIE");
+            winnerCard = null;
+        }
+
+        Invoke("resetStuffs", 2F);
+    }
+
+    void resetStuffs()
+    {
+        // reset stuffs & destroy cards
+        battle = 0;
+        dropzone.GetComponent<DropZone>().placed = false;
+        if (winnerCard != null) Destroy(winnerCard);
+        else
+        {
+            Destroy(p1Card);
+            Destroy(p2Card);
+        }
+        p1Card = p2Card =  winnerCard = null;
+
+        // new p2 card
+        p2Card = aiCode.randomPick();
     }
 }
