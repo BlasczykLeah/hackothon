@@ -220,16 +220,18 @@ public class cardComparer : MonoBehaviour
             {
                 // P1 wins, do stuffs
                 Debug.Log("P1 Wins!");
-                endScreen.SetActive(true);
                 AM.Over();
+                endScreen.SetActive(true);
+                AM.stahp();
                 winner.text = "Player Wins!";
             }
             else
             {
                 // P2 wins, od stuffs
                 Debug.Log("P2 Wins!");
-                endScreen.SetActive(true);
                 AM.Over();
+                endScreen.SetActive(true);
+                AM.stahp();
                 winner.text = "CPU Wins!";
             }
 

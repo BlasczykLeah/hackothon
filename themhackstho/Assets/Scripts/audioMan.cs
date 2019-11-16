@@ -5,7 +5,7 @@ using UnityEngine;
 public class audioMan : MonoBehaviour
 {
     public static audioMan instance;
-    public AudioSource button, win, lose, end, touch, clank, yes;
+    public AudioSource button, win, lose, end, touch, clank, yes, song;
 
     public void Awake()
     {
@@ -46,5 +46,9 @@ public class audioMan : MonoBehaviour
     public void draw()
     {
         yes.Play();
+    }
+    public void stahp()
+    {
+        song.Stop();
     }
 }
