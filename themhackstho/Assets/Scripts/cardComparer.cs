@@ -8,7 +8,7 @@ public class cardComparer : MonoBehaviour
     public static cardComparer inst;
 
     public GameObject p1, p2;
-    public Image p1Card, p2Card;
+    public GameObject p1Card, p2Card;
     Player1Me meCode;
     Player2AI aiCode;
 
@@ -37,8 +37,10 @@ public class cardComparer : MonoBehaviour
             if (battle == -1) aiCode.Points++;
             if (battle == 1) meCode.Points++;
 
-                // reset stuffs
+                // reset stuffs & destroy cards
             battle = 0;
+            Destroy(p1Card);
+            Destroy(p2Card);
             p1Card = p2Card = null;
         }
     }

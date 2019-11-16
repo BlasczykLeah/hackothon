@@ -46,31 +46,31 @@ public class myDeck : MonoBehaviour
         {
             Debug.Log("Chose card 0.");
             cardsLeft[0]--;
-            if (isPlayer) newCard = Instantiate(cardPrefs[0], gameObject.transform);
+            newCard = Instantiate(cardPrefs[0], gameObject.transform);
         }
         else if (index < cardsLeft[0] + cardsLeft[1])
         {
             Debug.Log("Chose card 1.");
             cardsLeft[1]--;
-            if (isPlayer) newCard = Instantiate(cardPrefs[1], gameObject.transform);
+            newCard = Instantiate(cardPrefs[1], gameObject.transform);
         }
         else if (index < cardsLeft[0] + cardsLeft[1] + cardsLeft[2])
         {
             Debug.Log("Chose card 2.");
             cardsLeft[2]--;
-            if (isPlayer) newCard = Instantiate(cardPrefs[2], gameObject.transform);
+            newCard = Instantiate(cardPrefs[2], gameObject.transform);
         }
         else if (index < cardsLeft[0] + cardsLeft[1] + cardsLeft[2] + cardsLeft[3])
         {
             Debug.Log("Chose card 3.");
             cardsLeft[3]--;
-            if (isPlayer) newCard = Instantiate(cardPrefs[3], gameObject.transform);
+            newCard = Instantiate(cardPrefs[3], gameObject.transform);
         }
         else if (index == cardCount)
         {
             Debug.Log("Chose card 4.");
             cardsLeft[4]--;
-            if (isPlayer) newCard = Instantiate(cardPrefs[4], gameObject.transform);
+            newCard = Instantiate(cardPrefs[4], gameObject.transform);
         }
         else
         {
@@ -78,8 +78,10 @@ public class myDeck : MonoBehaviour
             newCard = null;
         }
 
-        if (isPlayer) newCard.transform.SetParent(hand.transform);
-        if (isPlayer) newCard.GetComponent<card>().playerDeck = this;
+        newCard.transform.SetParent(hand.transform);
+        if (isPlayer) newCard.GetComponent<card>().playerNum = 1;
+        else newCard.GetComponent<card>().playerNum = 2;
+        newCard.GetComponent<card>().playerDeck = this;
         return newCard;
     }
 }
