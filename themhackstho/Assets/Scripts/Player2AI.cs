@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player2AI : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class Player2AI : MonoBehaviour
     void Start()
     {
         theDeck = GetComponent<myDeck>();
+    }
+
+    private void Update()
+    {
+        
     }
 
     public GameObject randomPick()

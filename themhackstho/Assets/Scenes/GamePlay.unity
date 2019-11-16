@@ -474,11 +474,11 @@ MonoBehaviour:
   isPlayer: 0
   hand: {fileID: 953525257}
   cardPrefs:
-  - {fileID: 3173055359042309330, guid: d67e35490c6e1af479a6a966dcfbc4f2, type: 3}
-  - {fileID: 424628265773573849, guid: 909d187a566288845a64b958881aadcc, type: 3}
-  - {fileID: 4802701264382219895, guid: e6b1887e24c89b345bf149806a03aaaa, type: 3}
-  - {fileID: 8911386207311619180, guid: 9d5e45d3ba6610b4eaa9ed8d2ff88c91, type: 3}
-  - {fileID: 6993557240249769527, guid: cdf04ec21fafc4343a2714005577d8ba, type: 3}
+  - {fileID: 8623964771665866778, guid: d67e35490c6e1af479a6a966dcfbc4f2, type: 3}
+  - {fileID: 3320724925759444212, guid: 909d187a566288845a64b958881aadcc, type: 3}
+  - {fileID: 5243610009034057035, guid: e6b1887e24c89b345bf149806a03aaaa, type: 3}
+  - {fileID: 196586762685632334, guid: 9d5e45d3ba6610b4eaa9ed8d2ff88c91, type: 3}
+  - {fileID: 4756167457118391076, guid: cdf04ec21fafc4343a2714005577d8ba, type: 3}
   cardsLeft: 
   cardCount: 0
   myHand: []
@@ -618,11 +618,11 @@ MonoBehaviour:
   isPlayer: 1
   hand: {fileID: 384646853}
   cardPrefs:
-  - {fileID: 3173055359042309330, guid: d67e35490c6e1af479a6a966dcfbc4f2, type: 3}
-  - {fileID: 424628265773573849, guid: 909d187a566288845a64b958881aadcc, type: 3}
-  - {fileID: 4802701264382219895, guid: e6b1887e24c89b345bf149806a03aaaa, type: 3}
-  - {fileID: 8911386207311619180, guid: 9d5e45d3ba6610b4eaa9ed8d2ff88c91, type: 3}
-  - {fileID: 6993557240249769527, guid: cdf04ec21fafc4343a2714005577d8ba, type: 3}
+  - {fileID: 8623964771665866778, guid: d67e35490c6e1af479a6a966dcfbc4f2, type: 3}
+  - {fileID: 3320724925759444212, guid: 909d187a566288845a64b958881aadcc, type: 3}
+  - {fileID: 5243610009034057035, guid: e6b1887e24c89b345bf149806a03aaaa, type: 3}
+  - {fileID: 196586762685632334, guid: 9d5e45d3ba6610b4eaa9ed8d2ff88c91, type: 3}
+  - {fileID: 4756167457118391076, guid: cdf04ec21fafc4343a2714005577d8ba, type: 3}
   cardsLeft: 
   cardCount: 0
   myHand: []
