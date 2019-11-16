@@ -46,31 +46,31 @@ public class myDeck : MonoBehaviour
         {
             Debug.Log("Chose card 0.");
             cardsLeft[0]--;
-            newCard = Instantiate(cardPrefs[0], gameObject.transform);
+            if (isPlayer) newCard = Instantiate(cardPrefs[0], gameObject.transform);
         }
         else if (index < cardsLeft[0] + cardsLeft[1])
         {
             Debug.Log("Chose card 1.");
             cardsLeft[1]--;
-            newCard = Instantiate(cardPrefs[1], gameObject.transform);
+            if (isPlayer) newCard = Instantiate(cardPrefs[1], gameObject.transform);
         }
         else if (index < cardsLeft[0] + cardsLeft[1] + cardsLeft[2])
         {
             Debug.Log("Chose card 2.");
             cardsLeft[2]--;
-            newCard = Instantiate(cardPrefs[2], gameObject.transform);
+            if (isPlayer) newCard = Instantiate(cardPrefs[2], gameObject.transform);
         }
         else if (index < cardsLeft[0] + cardsLeft[1] + cardsLeft[2] + cardsLeft[3])
         {
             Debug.Log("Chose card 3.");
             cardsLeft[3]--;
-            newCard = Instantiate(cardPrefs[3], gameObject.transform);
+            if (isPlayer) newCard = Instantiate(cardPrefs[3], gameObject.transform);
         }
         else if (index == cardCount)
         {
             Debug.Log("Chose card 4.");
             cardsLeft[4]--;
-            newCard = Instantiate(cardPrefs[4], gameObject.transform);
+            if (isPlayer) newCard = Instantiate(cardPrefs[4], gameObject.transform);
         }
         else
         {
@@ -78,8 +78,8 @@ public class myDeck : MonoBehaviour
             newCard = null;
         }
 
-        newCard.transform.SetParent(hand.transform);
-        newCard.GetComponent<card>().playerDeck = this;
+        if (isPlayer) newCard.transform.SetParent(hand.transform);
+        if (isPlayer) newCard.GetComponent<card>().playerDeck = this;
         return newCard;
     }
 }
