@@ -9,6 +9,8 @@ public class Player2AI : MonoBehaviour
     public myDeck theDeck;
     public int[] playerChoices;
     CardType[] cardTypes;
+    public Image coin, coinSack;
+    public List<Image> money;
 
     void Start()
     {
@@ -137,5 +139,19 @@ public class Player2AI : MonoBehaviour
         }
         Debug.Log("I'm out of cards!");
         return null;
+    }
+
+    public void AIaddCoin()
+    {
+        Image temp = Instantiate(coin, gameObject.transform);
+        temp.transform.SetParent(coinSack.transform);
+        money.Add(temp);
+    }
+
+    public void removeCoin()
+    {
+        Image temp = money[0];
+        money.RemoveAt(0);
+        Destroy(temp.gameObject);
     }
 }

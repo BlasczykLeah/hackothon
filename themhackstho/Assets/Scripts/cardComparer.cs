@@ -152,6 +152,7 @@ public class cardComparer : MonoBehaviour
         {
             Debug.Log("P2 WON BATTLE");
             Destroy(p1Card);
+            aiCode.AIaddCoin();
             winnerCard = p2Card;
             aiCode.Points++;
         }
