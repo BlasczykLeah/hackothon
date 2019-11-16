@@ -9,5 +9,5 @@ public class card : MonoBehaviour
 
 public enum CardType
 {
-    Wizard, Knight, Archer, Sovereign, Dargon;
+    Wizard, Knight, Archer, Sovereign, Dargon
 }
