@@ -7,6 +7,12 @@ public class DropZone : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Dropped on " + gameObject.name);
+        Debug.Log(eventData.pointerDrag.name + " Placed in the " + gameObject.name);
+
+        Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
+        if(d != null)
+        {
+            d.parentToSnapTo = this.transform;
+        }
     }
 }
