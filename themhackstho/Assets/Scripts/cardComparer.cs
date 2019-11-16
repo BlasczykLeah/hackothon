@@ -177,7 +177,7 @@ public class cardComparer : MonoBehaviour
     {
         // reset stuffs & destroy cards
         battle = 0;
-        dropzone.GetComponent<DropZone>().placed = false;
+        //dropzone.GetComponent<DropZone>().placed = false;
         if (winnerCard != null) Destroy(winnerCard);
         else
         {
@@ -192,6 +192,9 @@ public class cardComparer : MonoBehaviour
 
     bool checkForWin(int p1Score, int p2Score)
     {
+        if(p1.GetComponent<myDeck>().myHand.Count == 0 && p1Score < 1) p2Score = 10;
+        if(p2.GetComponent<myDeck>().myHand.Count == 0 && p2Score < 1) p1Score = 10;
+
         if (p1Score < 5 && p2Score < 5) return false;
         else
         {
@@ -214,5 +217,11 @@ public class cardComparer : MonoBehaviour
 
             return true;
         }
+    }
+
+    public void P1Turn()
+    {
+            // wait for cpu to finish
+        dropzone.GetComponent<DropZone>().placed = false;
     }
 }

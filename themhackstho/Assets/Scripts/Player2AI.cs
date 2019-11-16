@@ -21,9 +21,20 @@ public class Player2AI : MonoBehaviour
         cardTypes = new CardType[5] { CardType.Wizard, CardType.Knight, CardType.Archer, CardType.Sovereign, CardType.Dargon };
     }
 
-    private void Update()
+    void moreCardsMaybe(int cardCount)
     {
-        
+        if (Points < 1) return;
+        if (cardCount > 3) return;
+
+        if(cardCount == 3 || cardCount == 2)
+        {
+            Dictionary<CardType, int> cards = new Dictionary<CardType, int>();
+            cards.Add(theDeck.myHand[0].GetComponent<card>().cardType, 1);
+            for(int i = 1; i < cardCount; i++)
+            {
+
+            }
+        }
     }
 
     public void updateChoices(CardType type)
@@ -132,13 +143,34 @@ public class Player2AI : MonoBehaviour
 
     public GameObject whatDoIDo()
     {
+        moreCardsMaybe(theDeck.myHand.Count);
+        
         if (theDeck.myHand.Count > 0)
         {
+            cardComparer.inst.P1Turn();
             if(theDeck.myHand.Count == 1) return randomPick();
             return smartPick();
         }
         Debug.Log("I'm out of cards!");
-        return null;
+        if (!drawCard()) return null;
+        else return smartPick();
+    }
+
+    public bool drawCard()
+    {
+        if (theDeck.myHand.Count < 4 && Points > 0)
+        {
+            removeCoin();
+            Points--;
+            theDeck.pickCard();
+            theDeck.pickCard();
+            return true;
+        }
+        else
+        {
+            Debug.Log("NOPE");
+            return false;
+        }
     }
 
     public void AIaddCoin()
