@@ -1626,7 +1626,6 @@ GameObject:
   - component: {fileID: 1427182906}
   - component: {fileID: 1427182905}
   - component: {fileID: 1427182904}
-  - component: {fileID: 1427182903}
   m_Layer: 5
   m_Name: Hand_CPU
   m_TagString: Untagged
@@ -1653,19 +1652,6 @@ RectTransform:
   m_AnchoredPosition: {x: -663.32983, y: -101.801155}
   m_SizeDelta: {x: 663.33, y: 224}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &1427182903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427182901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44fe6605160ac2d4bafa6f3f7780f780, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  placed: 0
 --- !u!114 &1427182904
 MonoBehaviour:
   m_ObjectHideFlags: 0
