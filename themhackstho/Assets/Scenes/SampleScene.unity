@@ -129,8 +129,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 162447955}
-  - component: {fileID: 162447954}
   - component: {fileID: 162447956}
+  - component: {fileID: 162447954}
   m_Layer: 0
   m_Name: Player1_Me
   m_TagString: Untagged
@@ -151,12 +151,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
+  hand: {fileID: 0}
   cardPrefs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4218697284088863337, guid: d67e35490c6e1af479a6a966dcfbc4f2, type: 3}
+  - {fileID: 3027271148443436496, guid: 909d187a566288845a64b958881aadcc, type: 3}
+  - {fileID: 114432651249638665, guid: e6b1887e24c89b345bf149806a03aaaa, type: 3}
+  - {fileID: 4218697284088863337, guid: d67e35490c6e1af479a6a966dcfbc4f2, type: 3}
+  - {fileID: 4218697284088863337, guid: d67e35490c6e1af479a6a966dcfbc4f2, type: 3}
   cardsLeft: 
   cardCount: 0
   myHand: []
@@ -216,9 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afbf6225c8acab4c8845cad1f72c0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p1: {fileID: 162447953}
+  p2: {fileID: 1804728286}
   p1Card: {fileID: 0}
   p2Card: {fileID: 0}
-  startCompare: 0
 --- !u!4 &560686656
 Transform:
   m_ObjectHideFlags: 0
@@ -504,6 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
+  hand: {fileID: 0}
   cardPrefs:
   - {fileID: 0}
   - {fileID: 0}
