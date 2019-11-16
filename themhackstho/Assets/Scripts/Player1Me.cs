@@ -22,8 +22,10 @@ public class Player1Me : MonoBehaviour
 
     public void drawCard()
     {
-        if(deck.myHand.Count < 4)
+        if(deck.myHand.Count < 4 && Points > 0)
         {
+            removeCoin();
+            Points--;
             deck.pickCard();
             deck.pickCard();
         }
@@ -38,5 +40,12 @@ public class Player1Me : MonoBehaviour
         Image temp = Instantiate(coin, gameObject.transform);
         temp.transform.SetParent(coinSack.transform);
         money.Add(temp);
+    }
+
+    public void removeCoin()
+    {
+        Image temp = money[0];
+        money.RemoveAt(0);
+        Destroy(temp.gameObject);
     }
 }
