@@ -52,8 +52,9 @@ public class Player2AI : MonoBehaviour
         if (theDeck.myHand.Count > 0)
         {
             int rand = Random.Range(0, 5);
-            if (rand < 2) return randomPick();
-            else return smartPick();
+            //if (rand < 2) return randomPick();
+            //else return smartPick();
+            randomPick();
         }
         Debug.Log("I'm out of cards!");
         return null;
