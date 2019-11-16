@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 2148725497162958025}
   m_Layer: 5
   m_Name: Wizard_Card
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
