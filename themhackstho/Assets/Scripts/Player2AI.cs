@@ -47,9 +47,19 @@ public class Player2AI : MonoBehaviour
         Debug.Log("IM SMART PICKING");
 
         int index = 0, index2 = -1, index3 = -1, count = playerChoices[0];
-        for(int i = 1; i < 5; i++)
+        for(int i = 1; i < 3; i++)
         {
-
+            if(playerChoices[i] == count)
+            {
+                if (index2 == -1) index2 = i;
+                else index3 = i;
+            } 
+            else if(playerChoices[i] > count)
+            {
+                count = playerChoices[i];
+                index = i;
+                if (index2 != -1) index2 = -1;
+            }
         }
 
         return null;
@@ -60,9 +70,9 @@ public class Player2AI : MonoBehaviour
         if (theDeck.myHand.Count > 0)
         {
             int rand = Random.Range(0, 5);
-            if (rand < 2) return randomPick();
-            else return smartPick();
-            //return randomPick();
+            //if (rand < 2) return randomPick();
+            //else return smartPick();
+            return randomPick();
         }
         Debug.Log("I'm out of cards!");
         return null;
