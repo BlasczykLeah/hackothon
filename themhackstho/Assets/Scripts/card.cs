@@ -14,6 +14,7 @@ public class card : MonoBehaviour
         if (playerNum == 1) cardComparer.inst.p1Card = gameObject;
         else cardComparer.inst.p2Card = gameObject;
 
+        cardComparer.inst.compare = true;
         playerDeck.myHand.Remove(gameObject.GetComponent<Image>());
     }
 }

@@ -42,13 +42,6 @@ public class myDeck : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void pickCard()
     {
         int randCard = Random.Range(0, cardCount);
@@ -97,5 +90,19 @@ public class myDeck : MonoBehaviour
         newCard.GetComponent<card>().playerDeck = this;
 
         myHand.Add(newCard);
+    }
+
+    public void aiAddCard()
+    {
+        Image temp = Instantiate(cardPrefs[5], aiHand.transform);
+        temp.transform.SetParent(aiHand.transform);
+        aiCards.Add(temp);
+    }
+
+    public void aiSubCard()
+    {
+        Image temp = aiCards[0];
+        aiCards.RemoveAt(0);
+        Destroy(temp.gameObject);
     }
 }
