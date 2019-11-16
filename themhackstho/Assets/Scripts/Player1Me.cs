@@ -19,6 +19,14 @@ public class Player1Me : MonoBehaviour
 
     public void drawCard()
     {
-        if
+        if(deck.myHand.Count < 4)
+        {
+            deck.pickCard();
+            deck.pickCard();
+        }
+        else
+        {
+            Debug.Log("HAND FULL");
+        }
     }
 }
