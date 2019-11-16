@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class myDeck : MonoBehaviour
 {
     public bool isPlayer;
-    public Image hand;
+    public Image hand, aiHand;
     public Image[] cardPrefs;
     public int[] cardsLeft;
     public int cardCount = 0;
 
     //public List<Image> currentDeck;
     public List<Image> myHand;
+    List<Image> aiCards;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +23,17 @@ public class myDeck : MonoBehaviour
         foreach (int a in cardsLeft) cardCount += a;
 
         myHand = new List<Image>();
+        if (!isPlayer) aiCards = new List<Image>();
 
         for(int i = 0; i < 5; i++)
         {
             pickCard();
+            if (!isPlayer)
+            {
+                Image temp = Instantiate(cardPrefs[5], aiHand.transform);
+                temp.transform.SetParent(aiHand.transform);
+                aiCards.Add(temp);
+            }
         }
 
         if (!isPlayer)
