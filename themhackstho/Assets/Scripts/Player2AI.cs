@@ -232,10 +232,10 @@ public class Player2AI : MonoBehaviour
         {
             removeCoin();
             Points--;
-            theDeck.pickCard();
-            theDeck.pickCard();
 
-            Invoke("addCard1", 0.5F);
+            theDeck.aiAddCard();
+            theDeck.pickCard();
+            Invoke("addCard", 0.5F);
 
             return true;
         }
@@ -260,14 +260,9 @@ public class Player2AI : MonoBehaviour
         Destroy(temp.gameObject);
     }
 
-    void addCard1()
+    void addCard()
     {
-        theDeck.aiAddCard();
-        Invoke("addCard2", 0.5F);
-    }
-
-    void addCard2()
-    {
+        theDeck.pickCard();
         theDeck.aiAddCard();
         cardComparer.inst.P1Turn();
     }

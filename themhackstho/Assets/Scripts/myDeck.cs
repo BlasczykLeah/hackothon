@@ -7,6 +7,7 @@ public class myDeck : MonoBehaviour
 {
     public bool isPlayer, outOfCards;
     public Image hand, aiHand;
+    public Text countTxt;
     public GameObject deckBtn;
     public Image[] cardPrefs;
     public int[] cardsLeft;
@@ -48,6 +49,7 @@ public class myDeck : MonoBehaviour
         if (cardCount <= 0) return;
         int randCard = Random.Range(0, cardCount);
         Image newCard = null;
+        countTxt.text = "Cards Left: " + cardCount;
 
         cardCount--;
         if (cardCount <= 0)
