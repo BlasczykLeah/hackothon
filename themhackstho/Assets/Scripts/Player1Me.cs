@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Player1Me : MonoBehaviour
 {
-    public int Points = 0;
+    public int Points = 0, maxCards = 5;
+    myDeck deck;
 
-    // Start is called before the first frame update
     void Start()
+    {
+        deck = GetComponent<myDeck>();
+    }
+
+    void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void drawCard()
     {
-        
+        if
     }
 }
