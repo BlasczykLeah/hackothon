@@ -54,7 +54,7 @@ public class Player2AI : MonoBehaviour
             int rand = Random.Range(0, 5);
             //if (rand < 2) return randomPick();
             //else return smartPick();
-            randomPick();
+            return randomPick();
         }
         Debug.Log("I'm out of cards!");
         return null;
