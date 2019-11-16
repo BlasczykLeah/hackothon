@@ -79,7 +79,7 @@ public class myDeck : MonoBehaviour
         }
         else
         {
-            Debug.Log("I messed something up D:");
+            Debug.Log("I messed something up D: also dylan says hello :D");
             newCard = null;
         }
 

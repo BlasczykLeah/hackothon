@@ -827,6 +827,10 @@ MonoBehaviour:
   p2: {fileID: 507892811}
   p1Card: {fileID: 0}
   p2Card: {fileID: 0}
+  dropzone: {fileID: 478264082}
+  battle: 0
+  P1Points: 0
+  P2Points: 0
 --- !u!4 &1130636608
 Transform:
   m_ObjectHideFlags: 0
