@@ -168,8 +168,8 @@ public class cardComparer : MonoBehaviour
             Debug.Log("TIE");
             winnerCard = null;
         }
-
-        Invoke("resetStuffs", 2F);
+        if (checkForWin(meCode.Points, aiCode.Points)) ; //somebody wins
+        else Invoke("resetStuffs", 2F);
     }
 
     void resetStuffs()
@@ -185,7 +185,29 @@ public class cardComparer : MonoBehaviour
         }
         p1Card = p2Card =  winnerCard = null;
 
-        // new p2 card
+        // new p2 move
         p2Card = aiCode.whatDoIDo();
+    }
+
+    bool checkForWin(int p1Score, int p2Score)
+    {
+        if (p1Score < 5 && p2Score < 5) return false;
+        else
+        {
+            foreach (GameObject cards in GameObject.FindGameObjectsWithTag("Card")) Destroy(cards);
+            // disable ability to buy things, dunno other win things
+            if (p1Score >= 5)
+            {
+                // P1 wins, do stuffs
+                Debug.Log("P1 Wins!");
+            }
+            else
+            {
+                // P2 wins, od stuffs
+                Debug.Log("P2 Wins!");
+            }
+
+            return true;
+        }
     }
 }
