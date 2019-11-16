@@ -54,7 +54,8 @@ public class cardComparer : MonoBehaviour
 
     int battleResults(CardType p1c, CardType p2c)
     {
-        Debug.Log("Comparing: " + p1c.ToString() + " + " + p2c.ToString());
+        //Debug.Log("Comparing: " + p1c.ToString() + " + " + p2c.ToString());
+        aiCode.updateChoices(p1c);
 
         if(p1c == CardType.Wizard)
         {
