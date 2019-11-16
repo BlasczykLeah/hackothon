@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class buttonStuff : MonoBehaviour
 {
-    public void restartGame()
+    public void MainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
     }
 
     public void Exit()
