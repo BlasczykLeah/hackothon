@@ -34,6 +34,7 @@ public class Player2AI : MonoBehaviour
 
     public GameObject randomPick()
     {
+        Debug.Log("IM RANDOMLY PICKING");
         int rand = Random.Range(0, theDeck.myHand.Count);
         GameObject theCard = theDeck.myHand[rand].gameObject;
         theDeck.myHand.RemoveAt(rand);
@@ -43,6 +44,13 @@ public class Player2AI : MonoBehaviour
 
     public GameObject smartPick()
     {
+        Debug.Log("IM SMART PICKING");
+
+        int index = 0, index2 = -1, index3 = -1, count = playerChoices[0];
+        for(int i = 1; i < 5; i++)
+        {
+
+        }
 
         return null;
     }
@@ -52,9 +60,9 @@ public class Player2AI : MonoBehaviour
         if (theDeck.myHand.Count > 0)
         {
             int rand = Random.Range(0, 5);
-            //if (rand < 2) return randomPick();
-            //else return smartPick();
-            return randomPick();
+            if (rand < 2) return randomPick();
+            else return smartPick();
+            //return randomPick();
         }
         Debug.Log("I'm out of cards!");
         return null;
