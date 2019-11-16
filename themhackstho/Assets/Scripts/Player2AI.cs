@@ -8,6 +8,7 @@ public class Player2AI : MonoBehaviour
     public int Points = 0;
     public myDeck theDeck;
     public int[] playerChoices;
+    CardType[] cardTypes;
 
     void Start()
     {
@@ -15,6 +16,7 @@ public class Player2AI : MonoBehaviour
 
         // Wizard, Knight, Archer, Sovereign, Dargon
         playerChoices = new int[5] { 0, 0, 0, 0, 0 };
+        cardTypes = new CardType[5] { CardType.Wizard, CardType.Knight, CardType.Archer, CardType.Sovereign, CardType.Dargon };
     }
 
     private void Update()
@@ -46,7 +48,9 @@ public class Player2AI : MonoBehaviour
     {
         Debug.Log("IM SMART PICKING");
 
+        int[] priority = null;
         int index = 0, index2 = -1, index3 = -1, count = playerChoices[0];
+
         for(int i = 1; i < 3; i++)
         {
             if(playerChoices[i] == count)
@@ -62,6 +66,65 @@ public class Player2AI : MonoBehaviour
             }
         }
 
+        if(index3 != -1)
+        {
+            // doesnt matter, even odds
+            Debug.Log("Its equal, just gonna random it then");
+            return randomPick();
+        }
+
+        if (index2 != -1)
+        {
+            Debug.Log("Two are the same, they are: " + cardTypes[index].ToString() + " and " + cardTypes[index2].ToString());
+            // picks: counter, specialS, specialD, tie, lose
+            if (index == 0 && index2 == 1) priority = new int[5] { 0, 3, 4, 2, 1 };
+            else if (index == 1 && index2 == 0) priority = new int[5] { 0, 3, 4, 2, 1 };
+
+            else if (index == 1 && index2 == 2) priority = new int[5] { 1, 3, 4, 0, 2 };
+            else if (index == 2 && index2 == 1) priority = new int[5] { 1, 3, 4, 0, 2 };
+
+            else if (index == 0 && index2 == 2) priority = new int[5] { 2, 3, 4, 1, 0 };
+            else if (index == 2 && index2 == 0) priority = new int[5] { 2, 3, 4, 1, 0 };
+
+            else Debug.Log("sad");
+        }
+
+        else
+        {
+            Debug.Log("Only one is bigger, its: " + cardTypes[index].ToString());
+            if (index == 0) priority = new int[5] { 2, 3, 4, 0, 1 };
+            else if (index == 1) priority = new int[5] { 0, 3, 4, 1, 2 };
+            else if (index == 2) priority = new int[5] { 1, 3, 4, 2, 0 };
+            else Debug.Log("sad");
+        }
+
+        if (priority == null)
+        {
+            Debug.Log("Something broke D:");
+            return null;
+        }
+
+        foreach (int a in priority) Debug.Log(a);
+
+        // find cards
+        for(int i = 0; i < 5; i++)
+        {
+            int myChoice = priority[i];
+            Debug.Log("I wanna pick " + cardTypes[myChoice].ToString());
+            foreach(Image cards in theDeck.myHand)
+            {
+                if(cards.GetComponent<card>().cardType == cardTypes[myChoice])
+                {
+                    Image mine = cards;
+                    theDeck.myHand.Remove(cards);
+                    Debug.Log("I picked " + cards.GetComponent<card>().cardType.ToString());
+                    return mine.gameObject;
+                }
+            }
+            Debug.Log("I don't have any " + cardTypes[i].ToString());
+        }
+
+        Debug.Log("Something broke D:");
         return null;
     }
 
@@ -69,10 +132,8 @@ public class Player2AI : MonoBehaviour
     {
         if (theDeck.myHand.Count > 0)
         {
-            int rand = Random.Range(0, 5);
-            //if (rand < 2) return randomPick();
-            //else return smartPick();
-            return randomPick();
+            if(theDeck.myHand.Count == 1) return randomPick();
+            return smartPick();
         }
         Debug.Log("I'm out of cards!");
         return null;

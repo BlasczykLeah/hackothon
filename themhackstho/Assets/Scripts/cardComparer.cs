@@ -186,6 +186,6 @@ public class cardComparer : MonoBehaviour
         p1Card = p2Card =  winnerCard = null;
 
         // new p2 card
-        p2Card = aiCode.randomPick();
+        p2Card = aiCode.whatDoIDo();
     }
 }

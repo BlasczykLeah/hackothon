@@ -38,7 +38,7 @@ public class myDeck : MonoBehaviour
 
         if (!isPlayer)
         {
-            cardComparer.inst.p2Card = GetComponent<Player2AI>().whatDoIDo();
+            cardComparer.inst.p2Card = GetComponent<Player2AI>().randomPick();
         }
     }
 
