@@ -9,7 +9,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Begin Drag");
+        //Debug.Log("Begin Drag");
 
         parentToSnapTo = this.transform.parent;
         this.transform.SetParent(this.transform.parent.parent);
@@ -19,14 +19,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
+        //Debug.Log("Dragging");
 
         this.transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("End Drag");
+        //Debug.Log("End Drag");
 
         this.transform.SetParent(parentToSnapTo);
         GetComponent<CanvasGroup>().blocksRaycasts = true;

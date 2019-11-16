@@ -9,8 +9,15 @@ public class cardComparer : MonoBehaviour
 
     public GameObject p1, p2;
     public GameObject p1Card, p2Card;
+    public GameObject dropzone;
     Player1Me meCode;
     Player2AI aiCode;
+
+    public int battle;
+
+    [Header("Points")]
+    public int P1Points;
+    public int P2Points;
 
     private void Awake()
     {
@@ -20,7 +27,7 @@ public class cardComparer : MonoBehaviour
 
     void Start()
     {
-        p1Card = p2Card = null;
+        //p1Card = p2Card = null;
         meCode = p1.GetComponent<Player1Me>();
         aiCode = p2.GetComponent<Player2AI>();
     }
@@ -33,7 +40,7 @@ public class cardComparer : MonoBehaviour
             // compare cards, destroy cards, reset, reactivate ai
 
                 // compare, give points
-            int battle = battleResults(p1Card.GetComponent<card>().cardType, p1Card.GetComponent<card>().cardType);
+            battle = battleResults(p1Card.GetComponent<card>().cardType, p2Card.GetComponent<card>().cardType);
             if (battle == -1)
             {
                 Debug.Log("P2 WON BATTLE");
@@ -48,6 +55,7 @@ public class cardComparer : MonoBehaviour
 
                 // reset stuffs & destroy cards
             battle = 0;
+            dropzone.GetComponent<DropZone>().placed = false;
             Destroy(p1Card);
             Destroy(p2Card);
             p1Card = p2Card = null;
@@ -55,10 +63,15 @@ public class cardComparer : MonoBehaviour
                 // new p2 card
             p2Card = aiCode.randomPick();
         }
+
+        P1Points = meCode.Points;
+        P2Points = aiCode.Points;
     }
 
     int battleResults(CardType p1c, CardType p2c)
     {
+        Debug.Log("Comparing: " + p1c.ToString() + " + " + p2c.ToString());
+
         if(p1c == CardType.Wizard)
         {
             if(p2c == CardType.Archer)
