@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Player1Me : MonoBehaviour
 {
+    audioMan AM;
     public int Points = 0, maxCards = 5;
     myDeck deck;
     public Image coin, coinSack;
@@ -13,6 +14,7 @@ public class Player1Me : MonoBehaviour
     void Start()
     {
         deck = GetComponent<myDeck>();
+        AM = audioMan.instance;
     }
 
     void Update()
@@ -25,6 +27,7 @@ public class Player1Me : MonoBehaviour
         if(deck.myHand.Count < 4 && Points > 0)
         {
             removeCoin();
+            AM.draw();
             Points--;
             deck.pickCard();
             Invoke("addCard", 0.5F);

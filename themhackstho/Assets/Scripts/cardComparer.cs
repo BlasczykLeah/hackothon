@@ -7,6 +7,8 @@ public class cardComparer : MonoBehaviour
 {
     public static cardComparer inst;
 
+    audioMan AM;
+
     public bool compare = false;
     public GameObject p1, p2;
     public GameObject p1Card, p2Card;
@@ -34,6 +36,7 @@ public class cardComparer : MonoBehaviour
         //p1Card = p2Card = null;
         meCode = p1.GetComponent<Player1Me>();
         aiCode = p2.GetComponent<Player2AI>();
+        AM = audioMan.instance;
     }
 
     // Update is called once per frame
@@ -152,6 +155,7 @@ public class cardComparer : MonoBehaviour
         if (battle == -1)
         {
             Debug.Log("P2 WON BATTLE");
+            AM.Defeat();
             Destroy(p1Card);
             aiCode.AIaddCoin();
             winnerCard = p2Card;
@@ -160,6 +164,7 @@ public class cardComparer : MonoBehaviour
         else if (battle == 1)
         {
             Debug.Log("P1 WON BATTLE");
+            AM.Victory();
             Destroy(p2Card);
             meCode.addCoin();
             winnerCard = p1Card;
@@ -168,10 +173,11 @@ public class cardComparer : MonoBehaviour
         else
         {
             Debug.Log("TIE");
+            AM.tie();
             winnerCard = null;
         }
         if (checkForWin(meCode.Points, aiCode.Points)) ; //somebody wins
-        else Invoke("resetStuffs", 2F);
+        else Invoke("resetStuffs", 1.5F);
     }
 
     void resetStuffs()
@@ -215,6 +221,7 @@ public class cardComparer : MonoBehaviour
                 // P1 wins, do stuffs
                 Debug.Log("P1 Wins!");
                 endScreen.SetActive(true);
+                AM.Over();
                 winner.text = "Player Wins!";
             }
             else
@@ -222,6 +229,7 @@ public class cardComparer : MonoBehaviour
                 // P2 wins, od stuffs
                 Debug.Log("P2 Wins!");
                 endScreen.SetActive(true);
+                AM.Over();
                 winner.text = "CPU Wins!";
             }
 

@@ -5,11 +5,18 @@ using UnityEngine.EventSystems;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    audioMan AM;
     public Transform parentToSnapTo = null;
+
+    public void Start()
+    {
+        AM = audioMan.instance;
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         //Debug.Log("Begin Drag");
+        AM.hold();
 
         parentToSnapTo = this.transform.parent;
         this.transform.SetParent(this.transform.parent.parent);
@@ -27,6 +34,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnEndDrag(PointerEventData eventData)
     {
         //Debug.Log("End Drag");
+        AM.hold();
 
         this.transform.SetParent(parentToSnapTo);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
