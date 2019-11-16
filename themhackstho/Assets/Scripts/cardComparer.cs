@@ -193,8 +193,13 @@ public class cardComparer : MonoBehaviour
 
     bool checkForWin(int p1Score, int p2Score)
     {
+            // cant buy more cards
         if(p1.GetComponent<myDeck>().myHand.Count == 0 && p1Score < 1) p2Score = 10;
         if(p2.GetComponent<myDeck>().myHand.Count == 0 && p2Score < 1) p1Score = 10;
+
+            // completely out of cards
+        if (p1.GetComponent<myDeck>().myHand.Count == 0 && p1.GetComponent<myDeck>().outOfCards) p2Score = 10;
+        if (p2.GetComponent<myDeck>().myHand.Count == 0 && p2.GetComponent<myDeck>().outOfCards) p1Score = 10;
 
         if (p1Score < 5 && p2Score < 5) return false;
         else
