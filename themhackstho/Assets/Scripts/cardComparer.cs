@@ -34,14 +34,26 @@ public class cardComparer : MonoBehaviour
 
                 // compare, give points
             int battle = battleResults(p1Card.GetComponent<card>().cardType, p1Card.GetComponent<card>().cardType);
-            if (battle == -1) aiCode.Points++;
-            if (battle == 1) meCode.Points++;
+            if (battle == -1)
+            {
+                Debug.Log("P2 WON BATTLE");
+                aiCode.Points++;
+            }
+            if (battle == 1)
+            {
+                Debug.Log("P1 WON BATTLE");
+                meCode.Points++;
+            }
+            else Debug.Log("TIE");
 
                 // reset stuffs & destroy cards
             battle = 0;
             Destroy(p1Card);
             Destroy(p2Card);
             p1Card = p2Card = null;
+
+                // new p2 card
+            p2Card = aiCode.randomPick();
         }
     }
 
