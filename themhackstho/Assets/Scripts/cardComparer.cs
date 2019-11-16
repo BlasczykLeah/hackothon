@@ -195,7 +195,11 @@ public class cardComparer : MonoBehaviour
         else
         {
             foreach (GameObject cards in GameObject.FindGameObjectsWithTag("Card")) Destroy(cards);
+            p1.GetComponent<myDeck>().cardCount = 0;
+            p2.GetComponent<myDeck>().cardCount = 0;
+
             // disable ability to buy things, dunno other win things
+
             if (p1Score >= 5)
             {
                 // P1 wins, do stuffs
