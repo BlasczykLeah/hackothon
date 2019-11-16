@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 4802701264382219896}
   - component: {fileID: 9150491155751505075}
   - component: {fileID: 6463236003398914945}
+  - component: {fileID: 2943431567899042468}
   m_Layer: 5
   m_Name: Archer_Card
   m_TagString: Untagged
@@ -205,6 +206,20 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2943431567899042468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802701264382219898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdae57b9db1ef304589d7e9fe2b8581d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 2
+  playerDeck: {fileID: 0}
 --- !u!1 &4802701264596527277
 GameObject:
   m_ObjectHideFlags: 0
