@@ -10,9 +10,10 @@ public class cardComparer : MonoBehaviour
     public bool compare = false;
     public GameObject p1, p2;
     public GameObject p1Card, p2Card;
-    public GameObject dropzone;
+    public GameObject dropzone, endScreen;
     Player1Me meCode;
     Player2AI aiCode;
+    public Text winner;
 
     GameObject winnerCard;
 
@@ -208,11 +209,15 @@ public class cardComparer : MonoBehaviour
             {
                 // P1 wins, do stuffs
                 Debug.Log("P1 Wins!");
+                endScreen.SetActive(true);
+                winner.text = "Player Wins!";
             }
             else
             {
                 // P2 wins, od stuffs
                 Debug.Log("P2 Wins!");
+                endScreen.SetActive(true);
+                winner.text = "CPU Wins!";
             }
 
             return true;
