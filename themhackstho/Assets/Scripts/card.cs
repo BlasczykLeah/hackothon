@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class card : MonoBehaviour
 {
-    public int cardType;
+    public CardType cardType;
+    public myDeck playerDeck;
+
+    public void chosenCard()
+    {
+
+    }
 }
 
 public enum CardType
