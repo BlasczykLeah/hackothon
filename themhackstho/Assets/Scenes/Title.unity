@@ -269,7 +269,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Be the first one to rach 5 coins.
+  m_Text: Be the first one to reach 5 coins.
 --- !u!222 &53561150
 CanvasRenderer:
   m_ObjectHideFlags: 0
