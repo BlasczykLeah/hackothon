@@ -9,7 +9,7 @@ public class cardComparer : MonoBehaviour
 
     audioMan AM;
 
-    public bool compare = false;
+    public bool compare = false, eagleEye = false;
     public GameObject p1, p2;
     public GameObject p1Card, p2Card;
     public GameObject dropzone, endScreen;
@@ -56,20 +56,51 @@ public class cardComparer : MonoBehaviour
         P2Points = aiCode.Points;
     }
 
-    int battleResults(CardType p1c, CardType p2c)
+    int battleResults(CardType p1c, CardType p2c, bool isOP1, bool isOP2)
     {
-        //Debug.Log("Comparing: " + p1c.ToString() + " + " + p2c.ToString());
         aiCode.updateChoices(p1c);
+
+        // compare op cards
+        /*  -fire knight can kill the dragon
+         *  -arcane trickster ...
+         *  -eagle-eye archer can see opponents next card
+         */
+            // fire knight
+        if (p1c == CardType.Knight && isOP1 && p2c == CardType.Dargon) return 1; 
+        if (p2c == CardType.Knight && isOP2 && p1c == CardType.Dargon) return -1;
+
+            // eagle-eye archer
+        if (p1c == CardType.Archer && isOP1) eagleEye = true;
 
         if(p1c == CardType.Wizard)
         {
             if(p2c == CardType.Archer)
             {
+                if (isOP1)
+                {
+                    Debug.Log("P1 takes a card");
+                    p1.GetComponent<myDeck>().giveCard(p2.GetComponent<myDeck>());
+                }
+
                 //p1 wins
                 return 1;
             }
             else if(p2c == CardType.Wizard)
             {
+                // op wizard things
+                if (isOP1 && isOP2) return 0;
+                else if (isOP1)
+                {
+                    Debug.Log("P1 takes a card");
+                    p1.GetComponent<myDeck>().giveCard(p2.GetComponent<myDeck>());
+                    return 1;
+                }
+                else if (isOP2)
+                {
+                    Debug.Log("P2 takes a card");
+                    p2.GetComponent<myDeck>().giveCard(p1.GetComponent<myDeck>());
+                    return -1;
+                }
                 //tie
                 return 0;
             }
@@ -88,6 +119,9 @@ public class cardComparer : MonoBehaviour
             }
             else if (p2c == CardType.Knight)
             {
+                if (isOP1 && isOP2) return 0;
+                else if (isOP1) return 1;
+                else if (isOP2) return -1;
                 //tie
                 return 0;
             }
@@ -106,11 +140,20 @@ public class cardComparer : MonoBehaviour
             }
             else if (p2c == CardType.Archer)
             {
+                if (isOP1 && isOP2) return 0;
+                else if (isOP1) return 1;
+                else if (isOP2) return -1;
                 //tie
                 return 0;
             }
             else
             {
+                if (isOP2)
+                {
+                    Debug.Log("P2 takes a card");
+                    p2.GetComponent<myDeck>().giveCard(p1.GetComponent<myDeck>());
+                }
+
                 //p2 wins
                 return -1;
             }
@@ -151,7 +194,7 @@ public class cardComparer : MonoBehaviour
     void theBattle()
     {
         // compare, give points
-        battle = battleResults(p1Card.GetComponent<card>().cardType, p2Card.GetComponent<card>().cardType);
+        battle = battleResults(p1Card.GetComponent<card>().cardType, p2Card.GetComponent<card>().cardType, p1Card.GetComponent<card>().isOP, p2Card.GetComponent<card>().isOP);
         if (battle == -1)
         {
             Debug.Log("P2 WON BATTLE");
@@ -184,7 +227,6 @@ public class cardComparer : MonoBehaviour
     {
         // reset stuffs & destroy cards
         battle = 0;
-        //dropzone.GetComponent<DropZone>().placed = false;
         if (winnerCard != null) Destroy(winnerCard);
         else
         {
@@ -195,6 +237,12 @@ public class cardComparer : MonoBehaviour
 
         // new p2 move
         p2Card = aiCode.whatDoIDo();
+        if (eagleEye)   // archer op action
+        {
+            p2Card.transform.SetParent(dropzone.transform);
+            p2Card.GetComponent<Draggable>().enabled = false;
+            eagleEye = false;
+        }
     }
 
     bool checkForWin(int p1Score, int p2Score)

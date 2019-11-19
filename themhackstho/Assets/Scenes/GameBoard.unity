@@ -1935,6 +1935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compare: 0
+  eagleEye: 0
   p1: {fileID: 1904834035}
   p2: {fileID: 2044126423}
   p1Card: {fileID: 0}
@@ -2775,6 +2776,10 @@ MonoBehaviour:
   - {fileID: 5243610009034057035, guid: e6b1887e24c89b345bf149806a03aaaa, type: 3}
   - {fileID: 196586762685632334, guid: 9d5e45d3ba6610b4eaa9ed8d2ff88c91, type: 3}
   - {fileID: 4756167457118391076, guid: cdf04ec21fafc4343a2714005577d8ba, type: 3}
+  cardPrefsOP:
+  - {fileID: 6585884744422611833, guid: 4cadb37bc9adb274c9841960f4697859, type: 3}
+  - {fileID: 1880377671026120826, guid: 500a74a60cec92245b6b503abaa30348, type: 3}
+  - {fileID: 3514788023439069269, guid: 7bfbd6ba825854e49a12ba15b8daa164, type: 3}
   cardsLeft: 
   cardCount: 0
   myHand: []
@@ -3113,6 +3118,10 @@ MonoBehaviour:
   - {fileID: 196586762685632334, guid: 9d5e45d3ba6610b4eaa9ed8d2ff88c91, type: 3}
   - {fileID: 4756167457118391076, guid: cdf04ec21fafc4343a2714005577d8ba, type: 3}
   - {fileID: 5613755969079234586, guid: 9acc1456d7a7f214eaabeb56654cf7e1, type: 3}
+  cardPrefsOP:
+  - {fileID: 6585884744422611833, guid: 4cadb37bc9adb274c9841960f4697859, type: 3}
+  - {fileID: 1880377671026120826, guid: 500a74a60cec92245b6b503abaa30348, type: 3}
+  - {fileID: 3514788023439069269, guid: 7bfbd6ba825854e49a12ba15b8daa164, type: 3}
   cardsLeft: 
   cardCount: 0
   myHand: []

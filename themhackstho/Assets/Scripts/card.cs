@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class card : MonoBehaviour
 {
     public CardType cardType;
+    public bool isOP;
     public myDeck playerDeck;
     public int playerNum;
 
