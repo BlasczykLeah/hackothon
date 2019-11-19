@@ -172,11 +172,19 @@ public class myDeck : MonoBehaviour
         Debug.Log("I took a " + card.GetComponent<card>().cardType.ToString());
         otherDeck.myHand.Remove(card);
         myHand.Add(card);
+        card.GetComponent<card>().playerDeck = this;
+        if (isPlayer) card.GetComponent<card>().playerNum = 1;
+        else card.GetComponent<card>().playerNum = 2;
+
         card.transform.SetParent(hand.transform);
         if (!isPlayer)
         {
             aiAddCard();
             card.transform.position = new Vector3(1000, 1000, 1000);
+        }
+        else
+        {
+            otherDeck.aiSubCard();
         }
     }
 }
