@@ -159,6 +159,7 @@ public class Player2AI : MonoBehaviour
         {
             Debug.Log("Two are the same, they are: " + cardTypes[index].ToString() + " and " + cardTypes[index2].ToString());
             // picks: counter, specialS, specialD, tie, lose
+
             if (index == 0 && index2 == 1) priority = new int[5] { 0, 3, 4, 2, 1 };
             else if (index == 1 && index2 == 0) priority = new int[5] { 0, 3, 4, 2, 1 };
 
@@ -185,8 +186,6 @@ public class Player2AI : MonoBehaviour
             Debug.Log("Something broke D:");
             return null;
         }
-
-        foreach (int a in priority) Debug.Log(a);
 
         // find cards
         for(int i = 0; i < 5; i++)
@@ -235,7 +234,7 @@ public class Player2AI : MonoBehaviour
 
             theDeck.aiAddCard();
             theDeck.pickCard();
-            Invoke("addCard", 0.5F);
+            Invoke("addCardOffset", 0.5F);
 
             return true;
         }
@@ -260,7 +259,7 @@ public class Player2AI : MonoBehaviour
         Destroy(temp.gameObject);
     }
 
-    void addCard()
+    void addCardOffset()
     {
         theDeck.pickCard();
         theDeck.aiAddCard();

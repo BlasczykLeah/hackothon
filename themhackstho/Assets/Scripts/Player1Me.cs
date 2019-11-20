@@ -30,7 +30,7 @@ public class Player1Me : MonoBehaviour
             AM.draw();
             Points--;
             deck.pickCard();
-            Invoke("addCard", 0.5F);
+            Invoke("addCardOffset", 0.5F);
         }
         else
         {
@@ -52,7 +52,7 @@ public class Player1Me : MonoBehaviour
         Destroy(temp.gameObject);
     }
 
-    void addCard()
+    void addCardOffset()
     {
         deck.pickCard();
     }

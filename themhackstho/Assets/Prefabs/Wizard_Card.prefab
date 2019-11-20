@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -17.1}
-  m_SizeDelta: {x: 0, y: 16.2}
+  m_AnchoredPosition: {x: 0, y: -15.51}
+  m_SizeDelta: {x: 0, y: 18.93}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8623964771549449292
 CanvasRenderer:
@@ -142,7 +142,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 59bcab1e92782004ba3b8e03d7e511fb, type: 3}
-    m_FontSize: 13
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 0
+  isOP: 0
   playerDeck: {fileID: 0}
   playerNum: 0
 --- !u!1 &8623964772123692736
@@ -483,7 +484,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -0.47000122, y: 14.900002}
-  m_SizeDelta: {x: -24.03, y: 41.5}
+  m_SizeDelta: {x: -24.03, y: 43.065}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8623964773057556470
 CanvasRenderer:
@@ -515,10 +516,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: e54be8097a109b740bcfda26ed85448b, type: 3}
-    m_FontSize: 14
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 6
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
