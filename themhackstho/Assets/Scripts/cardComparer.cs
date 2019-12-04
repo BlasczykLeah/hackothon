@@ -70,7 +70,7 @@ public class cardComparer : MonoBehaviour
         if (p2c == CardType.Knight && isOP2 && p1c == CardType.Dargon) return -1;
 
             // eagle-eye archer
-        if (p1c == CardType.Archer && isOP1) eagleEye = true;
+        //if (p1c == CardType.Archer && isOP1) eagleEye = true;
 
         if(p1c == CardType.Wizard)
         {
@@ -136,12 +136,17 @@ public class cardComparer : MonoBehaviour
             if (p2c == CardType.Knight)
             {
                 //p1 wins
+                if(isOP1) eagleEye = true;
                 return 1;
             }
             else if (p2c == CardType.Archer)
             {
                 if (isOP1 && isOP2) return 0;
-                else if (isOP1) return 1;
+                else if (isOP1)
+                {
+                    eagleEye = true;
+                    return 1;
+                }
                 else if (isOP2) return -1;
                 //tie
                 return 0;
